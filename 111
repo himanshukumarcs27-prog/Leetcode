@@ -1,0 +1,56 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    private int count  = 0;
+    public int minDepth(TreeNode root) {
+        return  helper( root);
+    }
+   private   int helper(TreeNode root){
+     if( root == null ) return 0;
+     if(root.left==null)
+     {
+        count=helper(root.right)+1;
+        return count;
+     }
+     if(root.right==null)
+     {
+        count=helper(root.left)+1;
+        return count;
+     }
+     
+      int leftcount =0;
+      int rightcount = 0;
+      leftcount = helper(root.left);
+      rightcount = helper( root.right);
+      count = Math.min( leftcount ,  rightcount) + 1;
+      return count;
+   }
+}
